@@ -2,10 +2,8 @@ import { View } from "react-native";
 import React from "react";
 import { Text } from "~/components/ui/text";
 import List_itemCard from "~/components/List_itemCard";
-import Item_Card from "~/components/Item_Card";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
-import { Card } from "~/components/ui/card";
 
 const Account = () => {
   const [name, setName] = React.useState("");
@@ -51,7 +49,11 @@ const Account = () => {
         />
       </View>
       <View className="mx-32 mt-6">
-        <Button variant="outline" className="border-green-800" onPress={addItem}>
+        <Button
+          variant="outline"
+          className=" border-green-700 shadow shadow-foreground/10"
+          onPress={addItem}
+        >
           <Text className="text-green-700">Add Account</Text>
         </Button>
       </View>

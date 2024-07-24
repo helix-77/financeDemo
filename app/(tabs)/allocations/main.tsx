@@ -3,18 +3,22 @@ import React from "react";
 import { Text } from "~/components/ui/text";
 import { Button } from "~/components/ui/button";
 import { Link } from "expo-router";
+import { Card, CardTitle } from "~/components/ui/card";
+import Allocation_Card from "~/components/Allocation_Card";
 
 const MainScreen = () => {
   return (
-    <View>
-      <View className="mt-6 flex-1 flex-row justify-center align-middle ">
+    <>
+      <View className="mt-4 mb-10 flex-row justify-center align-middle ">
         <Link href="allocations/create" asChild>
-          <Button variant={"outline"} size={"default"} className="shadow shadow-foreground/5">
-            <Text>Present modal</Text>
+          <Button variant="outline" className=" border-green-700 shadow shadow-foreground/10">
+            <Text className=" text-green-700">Create</Text>
           </Button>
         </Link>
       </View>
-    </View>
+      {/* card container */}
+      <Allocation_Card />
+    </>
   );
 };
 
