@@ -19,10 +19,10 @@ const Account = () => {
 
   return (
     <>
-      <View className="justify-center align-middle mt-3 mx-5 ">
+      <View className="mx-5 mt-3 justify-center align-middle">
         <List_itemCard />
       </View>
-      <View className="flex-row justify-between mx-9 mt-10">
+      <View className="mx-9 mt-10 flex-row justify-between">
         <Input
           placeholder="Name..."
           value={name}
@@ -51,10 +51,10 @@ const Account = () => {
       <View className="mx-32 mt-6">
         <Button
           variant="outline"
-          className=" border-green-700 shadow shadow-foreground/10"
+          className="border-green-700 shadow shadow-foreground/10"
           onPress={addItem}
         >
-          <Text className="text-green-700">Add Account</Text>
+          <Text className="text-lg text-green-700">Add Account</Text>
         </Button>
       </View>
     </>

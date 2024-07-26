@@ -3,7 +3,6 @@ import React from "react";
 import { Text } from "~/components/ui/text";
 import { Button } from "~/components/ui/button";
 import { Link } from "expo-router";
-import { Card, CardTitle } from "~/components/ui/card";
 import Allocation_Card from "~/components/Allocation_Card";
 
 const MainScreen = () => {
