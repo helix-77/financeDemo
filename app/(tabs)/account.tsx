@@ -11,39 +11,52 @@ const AccountScreen = () => {
   const [cap, setCap] = React.useState("");
   const [tap, setTap] = React.useState("");
 
-  const addItem = () => {
-    console.log("name", name);
-    console.log("cap", cap);
-    console.log("tap", tap);
-    // sync with watermelondb
+  const addItem = async () => {
+    if (name === "" || cap === "" || tap === "") {
+      Alert.alert("Please fill all the fields");
+      return;
+    }
+
+    // create new post
+    await database.write(async () => {
+      await accountsCollection.create((account) => {
+        account.name = name;
+        account.cap = Number(cap);
+        account.tap = Number(tap);
+      });
+    });
+
+    setName("");
+    setCap("");
+    setTap("");
   };
 
   const testDB = async () => {
     // create new post
     // await database.write(async () => {
     //   await accountsCollection.create((account) => {
-    //     account.name = "tedjadshsakdnkljasdst";
-    //     account.cap = 99.5;
-    //     account.tap = 99;
+    //     account.name = name;
+    //     account.cap = Number(cap);
+    //     account.tap = Number(tap);
     //   });
     // });
-
+    //
     // // fetch account
-    const allAccounts = await accountsCollection.query().fetch();
-    console.log(allAccounts);
-
+    // const allAccounts = await accountsCollection.query().fetch();
+    // console.log(allAccounts);
+    //
     // delete
-    // await database.write(async () => {
-    //   await accountsCollection.query().destroyAllPermanently();
-    // });
+    await database.write(async () => {
+      await accountsCollection.query().destroyAllPermanently();
+    });
   };
 
   return (
     <>
-      <View className="mx-5 mt-3 justify-center align-middle">
+      <View className="mx-5 mt-3">
         <List_itemCard />
       </View>
-      <View className="mx-9 mt-10 flex-row justify-between">
+      <View className="mx-9 mt-3 flex-row justify-between">
         <Input
           placeholder="Name..."
           value={name}
@@ -78,13 +91,13 @@ const AccountScreen = () => {
         >
           <Text className="text-lg text-green-700">Add Account</Text>
         </Button>
-        <Button
+        {/* <Button
           variant="outline"
           className="mt-4 w-1/2 shadow shadow-foreground/10"
           onPress={testDB}
         >
           <Text className="text-lg">Test</Text>
-        </Button>
+        </Button> */}
       </View>
     </>
   );
