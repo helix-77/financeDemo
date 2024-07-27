@@ -49,9 +49,6 @@
     ],
     "experiments": {
       "typedRoutes": true
-    },
-    "@morrowdigital/watermelondb-expo-plugin": {
-      "disableJsi": true
     }
   }
 }
