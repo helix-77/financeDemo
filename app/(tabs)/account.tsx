@@ -4,9 +4,9 @@ import { Text } from "~/components/ui/text";
 import List_itemCard from "~/components/List_itemCard";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
-import database from "~/db";
+import database, { accountsCollection } from "~/db";
 
-const Account = () => {
+const AccountScreen = () => {
   const [name, setName] = React.useState("");
   const [cap, setCap] = React.useState("");
   const [tap, setTap] = React.useState("");
@@ -19,19 +19,23 @@ const Account = () => {
   };
 
   const testDB = async () => {
-    const accountsCollection = database.get("accounts");
     // create new post
-    await database.write(async () => {
-      await accountsCollection.create((account) => {
-        account.name = "tedjadshsakdnkljasdst";
-        account.cap = 99.5;
-        account.tap = 99;
-      });
-    });
+    // await database.write(async () => {
+    //   await accountsCollection.create((account) => {
+    //     account.name = "tedjadshsakdnkljasdst";
+    //     account.cap = 99.5;
+    //     account.tap = 99;
+    //   });
+    // });
 
-    // fetch account
+    // // fetch account
     const allAccounts = await accountsCollection.query().fetch();
     console.log(allAccounts);
+
+    // delete
+    // await database.write(async () => {
+    //   await accountsCollection.query().destroyAllPermanently();
+    // });
   };
 
   return (
@@ -86,4 +90,4 @@ const Account = () => {
   );
 };
 
-export default Account;
+export default AccountScreen;

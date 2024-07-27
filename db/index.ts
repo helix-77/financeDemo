@@ -4,7 +4,7 @@ import SQLiteAdapter from '@nozbe/watermelondb/adapters/sqlite'
 
 import schema from './schema'
 import migrations from './migrations'
-import Account from './model/Account'
+import Account from '../model/Account'
 // import Post from './model/Post' // ⬅️ You'll import your Models here
 
 // First, create the adapter to the underlying database:
@@ -33,3 +33,5 @@ const database = new Database({
 })
 
 export default database;
+
+export const accountsCollection = database.get<Account>("accounts");

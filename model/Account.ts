@@ -7,8 +7,8 @@ export default class Account extends Model {
     static table = 'accounts';
 
 
-    @text('name') name: string;
-    @field('cap') cap: number;
-    @field('tap') tap: number;
+    @text('name') name!: string;
+    @field('cap') cap!: number;
+    @field('tap') tap!: number;
 
 }
