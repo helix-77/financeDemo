@@ -4,14 +4,16 @@ export default appSchema({
     version: 1,
     tables: [
         // We'll add tableSchemas here later
-        // tableSchema({
-        //     name: 'posts',
-        //     columns: [
-        //         { name: 'title', type: 'string' },
-        //         { name: 'subtitle', type: 'string', isOptional: true },
-        //         { name: 'body', type: 'string' },
-        //         { name: 'is_pinned', type: 'boolean' },
-        //     ]
-        // }),
+        tableSchema({
+            name: 'accounts',
+            columns: [
+                { name: 'name', type: 'string' },
+                { name: 'cap', type: 'number' },
+                { name: 'tap', type: 'number' },
+
+
+
+            ]
+        }),
     ]
 })

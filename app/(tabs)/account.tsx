@@ -1,9 +1,10 @@
-import { View } from "react-native";
+import { Alert, View } from "react-native";
 import React from "react";
 import { Text } from "~/components/ui/text";
 import List_itemCard from "~/components/List_itemCard";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
+import database from "~/db";
 
 const Account = () => {
   const [name, setName] = React.useState("");
@@ -15,6 +16,22 @@ const Account = () => {
     console.log("cap", cap);
     console.log("tap", tap);
     // sync with watermelondb
+  };
+
+  const testDB = async () => {
+    const accountsCollection = database.get("accounts");
+    // create new post
+    await database.write(async () => {
+      await accountsCollection.create((account) => {
+        account.name = "tedjadshsakdnkljasdst";
+        account.cap = 99.5;
+        account.tap = 99;
+      });
+    });
+
+    // fetch account
+    const allAccounts = await accountsCollection.query().fetch();
+    console.log(allAccounts);
   };
 
   return (
@@ -48,13 +65,21 @@ const Account = () => {
           className="w-1/5"
         />
       </View>
-      <View className="mx-32 mt-6">
+
+      <View className="mt-6 flex-col items-center justify-between">
         <Button
           variant="outline"
-          className="border-green-700 shadow shadow-foreground/10"
+          className="w-1/2 border-green-700 shadow shadow-foreground/10"
           onPress={addItem}
         >
           <Text className="text-lg text-green-700">Add Account</Text>
+        </Button>
+        <Button
+          variant="outline"
+          className="mt-4 w-1/2 shadow shadow-foreground/10"
+          onPress={testDB}
+        >
+          <Text className="text-lg">Test</Text>
         </Button>
       </View>
     </>
