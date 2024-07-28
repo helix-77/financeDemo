@@ -1,13 +1,6 @@
 import React, { useState } from "react";
-import { TouchableOpacity, View, TextInput } from "react-native";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "./ui/card";
+import { TouchableOpacity, View, Platform } from "react-native";
+import { Card, CardDescription } from "./ui/card";
 import { Text } from "./ui/text";
 import Account from "~/model/Account";
 import { withObservables } from "@nozbe/watermelondb/react";
@@ -19,6 +12,7 @@ import {
   PopoverTrigger,
 } from "~/components/ui/popover";
 import { Button } from "~/components/ui/button";
+import { Input } from "./ui/input";
 
 function Item_Card({ account }: { account: Account }) {
   const [editedName, setEditedName] = useState(account.name);
@@ -26,6 +20,7 @@ function Item_Card({ account }: { account: Account }) {
   const [editedTap, setEditedTap] = useState(account.tap.toString());
 
   const updateAccount = async () => {
+    // edit
     await database.write(async () => {
       await account.update((account) => {
         account.name = editedName;
@@ -66,13 +61,16 @@ function Item_Card({ account }: { account: Account }) {
             <SquarePen size={20} color={"#3e9392"} strokeWidth={2} />
           </TouchableOpacity>
         </PopoverTrigger>
-        <PopoverContent className="w-80 p-4">
+        <PopoverContent
+          className="mt-20 w-80"
+          side={Platform.OS === "web" ? "bottom" : "top"}
+        >
           <Text className="mb-4 text-xl font-medium leading-none">
             Edit Account
           </Text>
           <View className="mb-4">
             <Text className="mb-2">Name:</Text>
-            <TextInput
+            <Input
               value={editedName}
               onChangeText={setEditedName}
               className="rounded border p-2"
@@ -80,7 +78,7 @@ function Item_Card({ account }: { account: Account }) {
           </View>
           <View className="mb-4">
             <Text className="mb-2">Cap (%):</Text>
-            <TextInput
+            <Input
               value={editedCap}
               onChangeText={setEditedCap}
               keyboardType="numeric"
@@ -89,7 +87,7 @@ function Item_Card({ account }: { account: Account }) {
           </View>
           <View className="mb-4">
             <Text className="mb-2">Tap (%):</Text>
-            <TextInput
+            <Input
               value={editedTap}
               onChangeText={setEditedTap}
               keyboardType="numeric"
