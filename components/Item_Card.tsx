@@ -54,11 +54,11 @@ function Item_Card({ account }: { account: Account }) {
           </View>
         </View>
       </Card>
-      {/* popover for edit button */}
+      {/* popover edit button starts */}
       <Popover>
         <PopoverTrigger asChild>
           <TouchableOpacity className="px-2">
-            <SquarePen size={20} color={"#3e9392"} strokeWidth={2} />
+            <SquarePen size={20} color={"#15803d"} strokeWidth={2} />
           </TouchableOpacity>
         </PopoverTrigger>
         <PopoverContent
@@ -99,6 +99,7 @@ function Item_Card({ account }: { account: Account }) {
           </Button>
         </PopoverContent>
       </Popover>
+      {/* delete button starts */}
       <TouchableOpacity onPress={deleteList}>
         <BadgeX size={20} color={"red"} strokeWidth={2} />
       </TouchableOpacity>
