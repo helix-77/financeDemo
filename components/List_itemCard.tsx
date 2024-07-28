@@ -10,13 +10,12 @@ function List_itemCard({ accounts }: { accounts: Account[] }) {
       <FlatList
         data={accounts}
         renderItem={({ item }) => <Item_Card account={item} />}
-        contentContainerClassName="max-w-sm mx-4"
       />
     </>
   );
 }
 
 const enhance = withObservables([], () => ({
-  accounts: accountsCollection.query(),
-}));
+  accounts: accountsCollection.query(), // ___.observe() is working in the background. And
+})); // we wont use fetch() this time to read the data.
 export default enhance(List_itemCard);

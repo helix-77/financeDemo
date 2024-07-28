@@ -41,19 +41,29 @@ const AccountScreen = () => {
     //   });
     // });
     //
-    // // fetch account
-    // const allAccounts = await accountsCollection.query().fetch();
-    // console.log(allAccounts);
     //
     // delete
+    // await database.write(async () => {
+    //   await accountsCollection.query().markAsDeleted();    // will mark to delete from remote server as well
+    // //  await accountsCollection.query().destroyAllPermanently();
+    // });
+
+    // update
     await database.write(async () => {
-      await accountsCollection.query().destroyAllPermanently();
+      const accounts = await accountsCollection.query().fetch();
+      await accounts[0].update((account) => {
+        account.name = "updated";
+      });
     });
+
+    // fetch account
+    const allAccounts = await accountsCollection.query().fetch();
+    console.log(allAccounts);
   };
 
   return (
     <>
-      <View className="mx-5 mt-3">
+      <View className="w-full px-4">
         <List_itemCard />
       </View>
       <View className="mx-9 mt-3 flex-row justify-between">
@@ -91,13 +101,13 @@ const AccountScreen = () => {
         >
           <Text className="text-lg text-green-700">Add Account</Text>
         </Button>
-        {/* <Button
+        <Button
           variant="outline"
           className="mt-4 w-1/2 shadow shadow-foreground/10"
           onPress={testDB}
         >
           <Text className="text-lg">Test</Text>
-        </Button> */}
+        </Button>
       </View>
     </>
   );
