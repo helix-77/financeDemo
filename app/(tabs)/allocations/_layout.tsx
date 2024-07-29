@@ -1,4 +1,5 @@
 import { Stack } from "expo-router";
+import { Platform } from "react-native";
 
 export default function Layout() {
   return (
@@ -14,6 +15,7 @@ export default function Layout() {
         name="create" // modal
         options={{
           presentation: "modal",
+          headerShown: Platform.OS === "android" ? false : true,
         }}
       />
     </Stack>
