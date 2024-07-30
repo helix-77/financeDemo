@@ -18,14 +18,13 @@ export default function Create() {
         // newAllocation.userId = user?.id;
       });
     });
+    router.push("../");
   };
 
   return (
     <>
       <View className="mx-2 my-2">
-        {/* Use `../` as a simple way to navigate to the root. This is not analogous to "goBack". */}
         {!isPresented && <Link href="../">Dismiss</Link>}
-        {/* Native modals have dark backgrounds on iOS. Set the status bar to light content and add a fallback for other platforms with auto. */}
         <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
         <View className="rounded-lg p-4">
           <Text className="text-xl font-bold">Create allocation :</Text>
@@ -33,7 +32,7 @@ export default function Create() {
             <Text className="text-sm">Income :</Text>
             <Input
               placeholder="$"
-              className="flex-1"
+              className="flex-1 bg-secondary"
               value={income}
               onChangeText={setIncome}
             />

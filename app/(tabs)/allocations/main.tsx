@@ -3,12 +3,12 @@ import React from "react";
 import { Text } from "~/components/ui/text";
 import { Button } from "~/components/ui/button";
 import { Link } from "expo-router";
-import Allocation_Card from "~/components/Allocation_Card";
+import Allocation_List from "~/components/Allocation_List";
 
 const MainScreen = () => {
   return (
     <>
-      <View className="mb-10 mt-4 flex-row justify-center align-middle">
+      <View className="mb-6 mt-4 flex-row justify-center align-middle">
         <Link href="allocations/create" asChild>
           <Button
             variant="outline"
@@ -19,7 +19,7 @@ const MainScreen = () => {
         </Link>
       </View>
       {/* card container */}
-      <Allocation_Card />
+      <Allocation_List />
     </>
   );
 };

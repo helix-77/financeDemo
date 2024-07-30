@@ -31,35 +31,34 @@ const AccountScreen = () => {
     setTap("");
   };
 
-  const testDB = async () => {
-    // create new post
-    // await database.write(async () => {
-    //   await accountsCollection.create((account) => {
-    //     account.name = name;
-    //     account.cap = Number(cap);
-    //     account.tap = Number(tap);
-    //   });
-    // });
-    //
-    //
-    // delete
-    // await database.write(async () => {
-    //   await accountsCollection.query().markAsDeleted();    // will mark to delete from remote server as well
-    // //  await accountsCollection.query().destroyAllPermanently();
-    // });
+  // const testDB = async () => {
+  //   //create new post
+  //   await database.write(async () => {
+  //     await accountsCollection.create((account) => {
+  //       account.name = name;
+  //       account.cap = Number(cap);
+  //       account.tap = Number(tap);
+  //     });
+  //   });
 
-    // update
-    await database.write(async () => {
-      const accounts = await accountsCollection.query().fetch();
-      await accounts[0].update((account) => {
-        account.name = "updated";
-      });
-    });
+  //   // delete
+  //   await database.write(async () => {
+  //     await accountsCollection.query().markAsDeleted(); // will mark to delete from remote server as well
+  //     //  await accountsCollection.query().destroyAllPermanently();
+  //   });
 
-    // fetch account
-    const allAccounts = await accountsCollection.query().fetch();
-    console.log(allAccounts);
-  };
+  //   // update
+  //   await database.write(async () => {
+  //     const accounts = await accountsCollection.query().fetch();
+  //     await accounts[0].update((account) => {
+  //       account.name = "updated";
+  //     });
+  //   });
+
+  //   // fetch account
+  //   const allAccounts = await accountsCollection.query().fetch();
+  //   console.log(allAccounts);
+  // };
 
   return (
     <>
@@ -101,13 +100,13 @@ const AccountScreen = () => {
         >
           <Text className="text-lg text-green-700">Add Account</Text>
         </Button>
-        <Button
+        {/* <Button
           variant="outline"
           className="mt-4 w-1/2 shadow shadow-foreground/10"
           onPress={testDB}
         >
           <Text className="text-lg">Test</Text>
-        </Button>
+        </Button> */}
       </View>
     </>
   );
