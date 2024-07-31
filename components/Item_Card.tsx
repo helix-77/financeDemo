@@ -39,7 +39,7 @@ function Item_Card({ account }: { account: Account }) {
 
   return (
     <View className="flex flex-row items-center justify-between">
-      <Card className="max-w-m my-3 w-[40vh] bg-secondary px-2">
+      <Card className="max-w-m my-3 w-[40vh] px-2">
         <View className="flex flex-row items-center justify-between px-3 py-2">
           <View className="w-[30vw]">
             <Text className="text-2xl">{account.name}</Text>

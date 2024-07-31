@@ -7,7 +7,7 @@ import Allocation from "~/model/Allocation";
 const AllocationList_Item = ({ allocation }: { allocation: Allocation }) => {
   return (
     <>
-      <View className="mx-2 my-4">
+      <View className="mx-2 my-4 bg-background">
         <Card className="mx-3 rounded-3xl bg-secondary">
           <View className="mx-6 flex flex-row justify-between py-6">
             <Text className="">
