@@ -1,10 +1,10 @@
 import React from "react";
 import { FlatList } from "react-native";
-import AllocationList_Item from "./AllocationList_Item";
 import { withObservables } from "@nozbe/watermelondb/react";
-import database, { allocationsCollection } from "~/db";
+import { allocationsCollection } from "~/db";
 import Allocation from "~/model/Allocation";
 import { Q } from "@nozbe/watermelondb";
+import AllocationList_Item from "./AllocationList_Item";
 
 const Allocation_List = ({ allocations }: { allocations: Allocation[] }) => {
   return (

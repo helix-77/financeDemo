@@ -9,7 +9,7 @@ const MainScreen = () => {
   return (
     <View className="bg-background">
       <View className="mb-6 mt-4 flex-row justify-center align-middle">
-        <Link href="allocations/create" asChild>
+        <Link href="/allocations/create" asChild>
           <Button
             variant="outline"
             className="border-green-700 shadow shadow-foreground/10"
