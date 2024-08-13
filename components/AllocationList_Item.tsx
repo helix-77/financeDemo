@@ -31,15 +31,15 @@ const AllocationList_Item = ({
           </View>
         </Card>
         {/* account allocations */}
+        {/* {accountAllocations.map((item) => ( */}
         <Card className="mx-6 rounded-2xl border-t-0 border-secondary">
           <View className="bg-s mx-4 flex flex-row justify-between px-4 py-4">
-            {accountAllocations.map((item) => (
-              <AccountAllocation_Item accountAllocation={item} />
-            ))}
-            {/* <Text>Income</Text>
-            <Text>$ {allocation.income}</Text> */}
+            {/* <AccountAllocation_Item accountAllocation={item} /> */}
+            <Text>account</Text>
+            <Text>$ {allocation.income}</Text>
           </View>
         </Card>
+        {/* ))} */}
       </View>
     </>
   );

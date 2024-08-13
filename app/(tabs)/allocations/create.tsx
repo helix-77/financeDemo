@@ -26,7 +26,7 @@ function Create({ accounts }: { accounts: Account[] }) {
 
   return (
     <>
-      <View className="mx-2 my-2 bg-white">
+      <View className="mx-2 my-2">
         {!isPresented && <Link href="../">Dismiss</Link>}
         <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
         <View className="rounded-lg p-4">

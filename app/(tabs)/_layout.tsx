@@ -1,10 +1,17 @@
 import { View, Text } from "react-native";
 import React from "react";
-import { Slot, Tabs } from "expo-router";
+import { Redirect, Slot, Tabs } from "expo-router";
 import { MaterialIcons } from "@expo/vector-icons";
 import { ThemeToggle } from "~/components/ThemeToggle";
+import { useAuth } from "~/providers/AuthProvider";
 
 const TabLayout = () => {
+  const { isAuthenticated } = useAuth();
+
+  if (!isAuthenticated) {
+    return <Redirect href="/login" />;
+  }
+
   return (
     <Tabs>
       {/* Allocation tab */}
@@ -14,7 +21,11 @@ const TabLayout = () => {
           title: "Allocation",
           headerRight: () => <ThemeToggle />,
           tabBarIcon: ({ size, color }) => (
-            <MaterialIcons name="account-balance-wallet" size={size} color={color} />
+            <MaterialIcons
+              name="account-balance-wallet"
+              size={size}
+              color={color}
+            />
           ),
         }}
       />

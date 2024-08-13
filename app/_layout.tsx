@@ -10,6 +10,7 @@ import { NAV_THEME } from "~/lib/constants";
 import { useColorScheme } from "~/lib/useColorScheme";
 import { PortalHost } from "@rn-primitives/portal";
 import { ThemeToggle } from "~/components/ThemeToggle";
+import AuthProvider from "~/providers/AuthProvider";
 
 const LIGHT_THEME: Theme = {
   dark: false,
@@ -62,28 +63,38 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
-      <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
-      {/* <Redirect href="/allocations/main" /> */}
-      <Stack>
-        <Stack.Screen
-          name="index"
-          options={{
-            title: "Home",
-            headerRight: () => <ThemeToggle />,
-          }}
-        />
-        <Stack.Screen
-          name="(tabs)"
-          options={{
-            headerShown: false,
-            title: "Tabs",
-            headerRight: () => <ThemeToggle />,
-          }}
-        />
-      </Stack>
-      <PortalHost />
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
+        <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
+        {/* <Redirect href="/allocations/main" /> */}
+        <Stack>
+          <Stack.Screen
+            name="index"
+            options={{
+              title: "Home",
+              headerRight: () => <ThemeToggle />,
+            }}
+          />
+          <Stack.Screen
+            name="(tabs)"
+            options={{
+              headerShown: false,
+              title: "Tabs",
+              headerRight: () => <ThemeToggle />,
+            }}
+          />
+          <Stack.Screen
+            name="(auth)"
+            options={{
+              title: "Account",
+              headerShown: true,
+              headerRight: () => <ThemeToggle />,
+            }}
+          />
+        </Stack>
+        <PortalHost />
+      </ThemeProvider>
+    </AuthProvider>
   );
 }
 {

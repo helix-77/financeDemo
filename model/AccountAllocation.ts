@@ -16,11 +16,11 @@ export default class AccountAllocation extends Model {
         accounts: { type: 'belongs_to', key: 'account_id' },
     };
 
-    @readonly @date('created_at') createdAt: Date;
-    @readonly @date('updated_at') updatedAt: Date;
+    @readonly @date('created_at') createdAt!: Date;
+    @readonly @date('updated_at') updatedAt!: Date;
 
-    @field('cap') cap: number;
-    @field('amount') amount: number;
+    @field('cap') cap!: number;
+    @field('amount') amount!: number;
     //   @nochange @field('user_id') userId: string;
 
     @immutableRelation('accounts', 'account_id') account;

@@ -20,12 +20,11 @@ function Item_Card({ account }: { account: Account }) {
   const [editedTap, setEditedTap] = useState(account.tap.toString());
 
   const updateAccount = async () => {
-    // edit
     await database.write(async () => {
       await account.update((account) => {
         account.name = editedName;
-        account.cap = parseFloat(editedCap);
-        account.tap = parseFloat(editedTap);
+        account.cap = parseInt(editedCap, 10);
+        account.tap = parseInt(editedTap, 10);
       });
     });
   };
