@@ -4,6 +4,7 @@ import { Redirect, Slot, Tabs } from "expo-router";
 import { MaterialIcons } from "@expo/vector-icons";
 import { ThemeToggle } from "~/components/ThemeToggle";
 import { useAuth } from "~/providers/AuthProvider";
+import Logout from "~/components/Logout";
 
 const TabLayout = () => {
   const { isAuthenticated } = useAuth();
@@ -34,7 +35,7 @@ const TabLayout = () => {
         name="account"
         options={{
           title: "Account",
-          headerRight: () => <ThemeToggle />,
+          headerRight: () => <Logout />,
           tabBarIcon: ({ size, color }) => (
             <MaterialIcons name="account-box" size={size} color={color} />
           ),
