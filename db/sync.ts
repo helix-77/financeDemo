@@ -7,7 +7,7 @@ export async function mySync() {
         database,
         sendCreatedAsUpdated: true,
         pullChanges: async ({ lastPulledAt, schemaVersion, migration }) => {
-            console.log("pull Changes")
+            // console.log("pull Changes")
 
             const { data, error } = await supabase.rpc('pull', {
                 last_pulled_at: lastPulledAt,
@@ -15,20 +15,20 @@ export async function mySync() {
                 migration,
             })
 
-            console.log("Push Error:", error)
+            console.log("Pull Error:", error)
             return {
                 changes: data?.changes || [],
                 timestamp: data?.timestamp || Date.now(),
             }
         },
         pushChanges: async ({ changes, lastPulledAt }) => {
-            console.log("push Changes")
+            // console.log("push Changes")
 
             const { error } = await supabase.rpc('push', { changes })
 
-            console.log("Pull Error:", error)
+            console.log("Push Error:", error)
 
-            console.log(changes)
+            // console.log(changes)
         },
     })
 }

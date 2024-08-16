@@ -6,6 +6,8 @@ import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import database, { accountsCollection } from "~/db";
 import { useAuth } from "~/providers/AuthProvider";
+import { mySync } from "~/db/sync";
+import { RefreshCcw } from "lucide-react-native";
 
 const AccountScreen = () => {
   const [name, setName] = React.useState("");
@@ -96,7 +98,7 @@ const AccountScreen = () => {
         />
       </View>
 
-      <View className="mt-6 flex-col items-center justify-between">
+      <View className="mt-6 flex-row justify-center align-middle">
         <Button
           variant="outline"
           className="w-1/2 border-green-700 shadow shadow-foreground/10"
@@ -104,14 +106,22 @@ const AccountScreen = () => {
         >
           <Text className="text-lg text-green-700">Add Account</Text>
         </Button>
-        {/* <Button
+        <Button
+          className="mx-4 flex flex-row gap-2"
+          variant="secondary"
+          onPress={mySync}
+        >
+          <Text>Sync</Text>
+          <RefreshCcw size={22} color="green" />
+        </Button>
+      </View>
+      {/* <Button
           variant="outline"
           className="mt-4 w-1/2 shadow shadow-foreground/10"
           onPress={testDB}
         >
           <Text className="text-lg">Test</Text>
         </Button> */}
-      </View>
     </>
   );
 };

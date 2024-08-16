@@ -19,9 +19,6 @@ const MainScreen = () => {
             <Text className="text-green-700">New Allocation</Text>
           </Button>
         </Link>
-        <TouchableOpacity className="mx-4" onPress={mySync}>
-          <RefreshCcw size={24} color="green" />
-        </TouchableOpacity>
       </View>
       {/* card container */}
       <Allocation_List />
