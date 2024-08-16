@@ -4,24 +4,44 @@ import { StatusBar } from "expo-status-bar";
 import { Text } from "~/components/ui/text";
 import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
-import database, { allocationsCollection, accountsCollection } from "~/db";
+import database, {
+  allocationsCollection,
+  accountsCollection,
+  accountAllocationsCollection,
+} from "~/db";
 import { useState } from "react";
 import { withObservables } from "@nozbe/watermelondb/react";
 import Allocation from "~/model/Allocation";
 import Account from "~/model/Account";
+import { useAuth } from "~/providers/AuthProvider";
 
 function Create({ accounts }: { accounts: Account[] }) {
   const isPresented = router.canGoBack();
   const [income, setIncome] = useState("");
+  const { user } = useAuth();
 
   const createAllocation = async () => {
     await database.write(async () => {
       await allocationsCollection.create((newAllocation) => {
         newAllocation.income = Number.parseFloat(income);
-        // newAllocation.userId = user?.id;
+        newAllocation.userId = user?.id ?? "";
       });
     });
-    router.push("../");
+
+    // await Promise.all(
+    //   accounts.map((account) =>
+    //     accountAllocationsCollection.create((item) => {
+    //       item.account.set(account);
+    //       item.allocation.set(allocation);
+    //       item.cap = account.cap;
+    //       item.amount = (allocation.income * account.cap) / 100;
+    //       item.userId = user?.id;
+    //     }),
+    //   ),
+    // );
+
+    setIncome("");
+    router.back();
   };
 
   return (

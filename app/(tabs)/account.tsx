@@ -5,11 +5,14 @@ import List_itemCard from "~/components/List_itemCard";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import database, { accountsCollection } from "~/db";
+import { useAuth } from "~/providers/AuthProvider";
 
 const AccountScreen = () => {
   const [name, setName] = React.useState("");
   const [cap, setCap] = React.useState("");
   const [tap, setTap] = React.useState("");
+
+  const { user } = useAuth();
 
   const addItem = async () => {
     if (name === "" || cap === "" || tap === "") {
@@ -23,6 +26,7 @@ const AccountScreen = () => {
         account.name = name;
         account.cap = Number(cap);
         account.tap = Number(tap);
+        account.userId = user?.id ?? "";
       });
     });
 

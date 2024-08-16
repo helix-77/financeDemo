@@ -38,7 +38,7 @@ function Item_Card({ account }: { account: Account }) {
 
   return (
     <View className="flex flex-row items-center justify-between">
-      <Card className="max-w-m my-3 w-[40vh] px-2">
+      <Card className="max-w-m my-3 w-[75vw] px-2">
         <View className="flex flex-row items-center justify-between px-3 py-2">
           <View className="w-[30vw]">
             <Text className="text-2xl">{account.name}</Text>
@@ -53,6 +53,7 @@ function Item_Card({ account }: { account: Account }) {
           </View>
         </View>
       </Card>
+
       {/* popover edit button starts */}
       <Popover>
         <PopoverTrigger asChild>
@@ -98,8 +99,9 @@ function Item_Card({ account }: { account: Account }) {
           </Button>
         </PopoverContent>
       </Popover>
+
       {/* delete button starts */}
-      <TouchableOpacity onPress={deleteList}>
+      <TouchableOpacity onPress={deleteList} className="px-2">
         <BadgeX size={20} color={"red"} strokeWidth={2} />
       </TouchableOpacity>
     </View>

@@ -1,9 +1,11 @@
-import { TouchableOpacity, View } from "react-native";
+import { Pressable, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { Text } from "~/components/ui/text";
 import { Button } from "~/components/ui/button";
 import { Link } from "expo-router";
 import Allocation_List from "~/components/Allocation_List";
+import { RefreshCcw } from "lucide-react-native";
+import { mySync } from "~/db/sync";
 
 const MainScreen = () => {
   return (
@@ -17,6 +19,9 @@ const MainScreen = () => {
             <Text className="text-green-700">New Allocation</Text>
           </Button>
         </Link>
+        <TouchableOpacity className="mx-4" onPress={mySync}>
+          <RefreshCcw size={24} color="green" />
+        </TouchableOpacity>
       </View>
       {/* card container */}
       <Allocation_List />
